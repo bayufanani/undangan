@@ -1,0 +1,138 @@
+:root {
+	--primary: #6e8641;
+	--muted-primary: #c3d4a5;
+	--btn-text: #e4f3ca;
+	--font-primary: #49592a;
+	--bright-matcha: #cdd0c0;
+}
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+html,
+body {
+	padding: 0;
+	margin: 0;
+}
+body {
+	color: var(--font-primary);
+	font-family: 'Playfair Display', serif;
+}
+
+/* Custom Bootstrap */
+.btn {
+	padding: 0.5rem 1rem;
+	border-radius: 9999px;
+	border: 1px solid;
+	color: var(--btn-text);
+}
+.btn-primary {
+	background-color: var(--primary);
+	border-color: var(--font-primary);
+}
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+/* Cover style */
+#cover {
+	background-color: var(--muted-primary);
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 11;
+	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+	transition: transform 0.3s ease-out;
+}
+#cover.opened {
+	transform: translateY(-100%);
+}
+.info-nama {
+	text-align: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+#cover .mempelai {
+	font-size: 1.5rem;
+}
+#cover .mempelai.satu {
+	transform: translateX(-10%);
+}
+#cover .mempelai.dua {
+	transform: translateX(10%);
+}
+#cover .dan {
+	font-size: 2.5rem;
+}
+#cover #open-btn {
+	margin-top: 1rem;
+}
+
+/* Content Style */
+#content {
+	height: 100vh;
+	overflow: auto;
+	color: var(--font-primary);
+	padding-bottom: 100px;
+}
+.slides {
+	padding: 0.25rem 1rem;
+}
+.center {
+	text-align: center;
+}
+.img-mempelai {
+	width: 128px;
+	height: 128px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin: auto;
+}
+.mempelai-spacer {
+	height: 3rem;
+}
+#slide-3 {
+	background-color: var(--btn-text);
+}
+
+/* Countdown */
+.countdown {
+	display: flex;
+	justify-content: center;
+}
+.countdown > div {
+	margin: 0 0.5rem;
+}
+
+/* Gifts */
+#slide-5 {
+	background-color: var(--btn-text);
+}
+
+/* Navigation style */
+#navigation ul li {
+	list-style-type: none;
+	padding: 1rem 1rem;
+}
+#navigation ul {
+	display: flex;
+	margin: 0;
+	justify-content: center;
+}
+#navigation {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	background-color: rgba(255, 255, 255, 0.7);
+	box-shadow: 0 -2px 25px rgba(30, 30, 30, 0.2);
+	backdrop-filter: blur(5px);
+}
