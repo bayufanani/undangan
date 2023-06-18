@@ -22,6 +22,17 @@ body {
 body {
 	color: var(--font-primary);
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-bottom: 0;
+}
+p {
+	margin: 0;
+}
 
 /* Custom Bootstrap */
 .btn {
@@ -99,7 +110,7 @@ select {
 	padding-bottom: 100px;
 }
 .slides {
-	padding: 0.25rem 1rem;
+	padding: 0.25rem 1rem 1rem;
 }
 .center {
 	text-align: center;

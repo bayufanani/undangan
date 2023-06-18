@@ -174,44 +174,50 @@
 		</div>
 	</div>
 	<div class="slides" id="slide-3">
-		<div class="center">
-			<h3>Save the date</h3>
-			<h4>Akad</h4>
-			<p>
-				27 Juni 2023 <br />
-				Pukul 08:00 WIB
-			</p>
-			<h4>Resepsi</h4>
-			<p>
-				27 Juni 2023 <br />
-				Pukul 13:00 WIB <br />
-				Lokasi: Rumah Pengantin Perempuan
-			</p>
-			<h4>Unduh Manten</h4>
-			<p>
-				28 Juni 2023 <br />
-				Pukul 14:00 WIB <br />
-				Lokasi: Rumah Pengantin Laki-laki
-			</p>
-			<h4>Lokasi</h4>
-			<p>Dukuh Bandaralim Tengah RT 003/ RW 002 Desa Bandaralim, Kec. Badegan (Erinta Eka)</p>
+		<div class="container">
+			<div class="center">
+				<h3>Save the date</h3>
+				<h4>Akad</h4>
+				<p>
+					27 Juni 2023 <br />
+					Pukul 08:00 WIB
+				</p>
+				<h4>Resepsi</h4>
+				<p>
+					27 Juni 2023 <br />
+					Pukul 13:00 WIB <br />
+					Lokasi: Rumah Pengantin Perempuan
+				</p>
+				<h4>Unduh Manten</h4>
+				<p>
+					28 Juni 2023 <br />
+					Pukul 14:00 WIB <br />
+					Lokasi: Rumah Pengantin Laki-laki
+				</p>
+				<h4>Lokasi</h4>
+				<p>Dukuh Bandaralim Tengah RT 003/ RW 002 Desa Bandaralim, Kec. Badegan (Erinta Eka)</p>
+			</div>
 		</div>
 	</div>
 	<div class="slides" id="slide-4">
-		<div class="center">
-			<h3>Count down to</h3>
-			<h4>Our Happy Day</h4>
-			<div class="countdown">
-				<div class="hari">{hari} hari</div>
-				<div class="jam">{jam} jam</div>
-				<div class="menit">{menit} menit</div>
-				<div class="detik">{detik} detik</div>
+		<div class="container">
+			<div class="center">
+				<h3>Count down to</h3>
+				<h4>Our Happy Day</h4>
+				<div class="countdown">
+					<div class="hari">{hari} hari</div>
+					<div class="jam">{jam} jam</div>
+					<div class="menit">{menit} menit</div>
+					<div class="detik">{detik} detik</div>
+				</div>
 			</div>
 		</div>
 	</div>
 	<div class="slides" id="slide-5">
-		<div class="center">
-			<h3>Send Gifts</h3>
+		<div class="container">
+			<div class="center">
+				<h3>Send Gifts</h3>
+			</div>
 		</div>
 	</div>
 	<div class="slides" id="slide-6">
@@ -253,8 +259,8 @@
 		</div>
 	</div>
 	<div class="slides" id="slide-7">
-		<h3 class="center">Pesan dari undangan</h3>
 		<div class="container">
+			<h3 class="center">Pesan dari undangan</h3>
 			{#each Object.entries(listPesan) as [id, psn]}
 				<div>
 					{psn.nama} <br />
