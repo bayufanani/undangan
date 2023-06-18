@@ -9,6 +9,10 @@
 *::after,
 *::before {
 	box-sizing: border-box;
+	font-family: 'Playfair Display', serif;
+}
+*::selection {
+	background-color: var(--muted-primary);
 }
 html,
 body {
@@ -17,7 +21,6 @@ body {
 }
 body {
 	color: var(--font-primary);
-	font-family: 'Playfair Display', serif;
 }
 
 /* Custom Bootstrap */
@@ -26,6 +29,7 @@ body {
 	border-radius: 9999px;
 	border: 1px solid;
 	color: var(--btn-text);
+	cursor: pointer;
 }
 .btn-primary {
 	background-color: var(--primary);
@@ -34,6 +38,18 @@ body {
 ul {
 	margin: 0;
 	padding: 0;
+}
+.spacer {
+	margin: 0.5rem 0;
+}
+input,
+textarea,
+select {
+	padding: 0.5rem;
+}
+.container {
+	max-width: 960px;
+	margin: auto;
 }
 
 /* Cover style */
@@ -114,6 +130,16 @@ ul {
 /* Gifts */
 #slide-5 {
 	background-color: var(--btn-text);
+}
+
+/* Send whises */
+.form-container {
+	max-width: 400px;
+	margin: auto;
+}
+.form-container input,
+.form-container textarea {
+	width: 100%;
 }
 
 /* Navigation style */

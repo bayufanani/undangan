@@ -10,9 +10,15 @@
 		updateProfile,
 		type UserCredential
 	} from 'firebase/auth';
-	import { getDatabase } from 'firebase/database';
+	import { Database, getDatabase, onValue, push, ref, set } from 'firebase/database';
 
-	let statusOpen: boolean = true;
+	type pesan = {
+		nama: string;
+		kedatangan: string;
+		pesan: string;
+	};
+
+	let statusOpen: boolean = false;
 	let hari: string = '0',
 		jam: string = '0',
 		menit: string = '0',
@@ -21,6 +27,31 @@
 
 	function openInvite() {
 		statusOpen = true;
+	}
+
+	let inputNama: string = '';
+	let inputKedatangan: string = '';
+	let inputPesan: string = '';
+
+	let listPesan: Array<pesan> = [];
+
+	let analytics, database: Database;
+
+	async function submit() {
+		// simpan nama session
+		if (authUser == undefined) {
+			alert('error, user are not logged in');
+			return;
+		}
+		await updateProfile(authUser, { displayName: inputNama });
+		console.log('usert profile updated');
+		await set(ref(database, 'pesan/' + authUser.uid), {
+			nama: inputNama,
+			kedatangan: inputKedatangan,
+			pesan: inputPesan,
+			created: Date.now()
+		});
+		console.log('insert db');
 	}
 
 	const tglNikah: number = new Date('Jun 27, 2023 08:00:00').getTime();
@@ -61,9 +92,13 @@
 
 		// Initialize Firebase
 		const app = initializeApp(firebaseConfig);
-		const analytics = getAnalytics(app);
-		const database = getDatabase(app);
+		analytics = getAnalytics(app);
+		database = getDatabase(app);
 
+		const refPesan = ref(database, 'pesan');
+		onValue(refPesan, (snapshot) => {
+			listPesan = snapshot.val();
+		});
 		// setTimeout(() => {
 		// 	updateProfile(auth.currentUser!, { displayName: 'bayu' })
 		// 		.then(() => {
@@ -76,8 +111,9 @@
 		const auth = getAuth(app);
 		signInAnonymously(auth)
 			.then((data) => {
-				console.log('you are signed in as: ', data.user.uid, 'whit name', data.user.displayName);
+				console.log('you are signed in as: ', data.user.uid, 'with name', data.user.displayName);
 				authUser = data.user;
+				inputNama = authUser.displayName || '';
 				// updateProfile(data.user, { displayName: 'testingaku1222' })
 				// 	.then(() => {
 				// 		console.log('updated display with ', auth.currentUser?.displayName);
@@ -102,34 +138,38 @@
 </div>
 <div id="content">
 	<div class="slides" id="slide-1">
-		<div class="center">
-			<p>The wedding of</p>
-			<h1>Erinta & Bayu</h1>
-			<p>Putri Bapak Sumirin & (Almh.) Ibu Lestari Beserta Putra Bapak Samaji dan Ibu Suminah</p>
+		<div class="container">
+			<div class="center">
+				<p>The wedding of</p>
+				<h1>Erinta & Bayu</h1>
+				<p>Putri Bapak Sumirin & (Almh.) Ibu Lestari Beserta Putra Bapak Samaji dan Ibu Suminah</p>
+			</div>
 		</div>
 	</div>
 	<div class="slides" id="slide-2">
-		<p class="center">اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَا تُهُ</p>
-		<p class="center">
-			Maha suci Allah yang telah menciptakan mahluk-Nya berpasang-pasangan. Ya Allah, perkenankanlah
-			kami merangkaikan kasih sayang yang kau ciptakan diantara kami untuk mengikuti Sunnah Rasul-Mu
-			dalam rangka membentuk keluarga yang sakinah, mawaddah, warahmah.
-		</p>
-		<div class="center">
-			<div class="mempelai">
-				<div class="img-mempelai">
-					<img src="./images/erinta_thumbnail.JPG" alt="" width="100%" />
+		<div class="container">
+			<p class="center">اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَا تُهُ</p>
+			<p class="center">
+				Maha suci Allah yang telah menciptakan mahluk-Nya berpasang-pasangan. Ya Allah,
+				perkenankanlah kami merangkaikan kasih sayang yang kau ciptakan diantara kami untuk
+				mengikuti Sunnah Rasul-Mu dalam rangka membentuk keluarga yang sakinah, mawaddah, warahmah.
+			</p>
+			<div class="center">
+				<div class="mempelai">
+					<div class="img-mempelai">
+						<img src="./images/erinta_thumbnail.JPG" alt="" width="100%" />
+					</div>
+					<h3>Erinta Eka Ruliyanti</h3>
+					<p>Putri Bapak S umirin & (Almh.) Ibu Sri Lestari</p>
 				</div>
-				<h3>Erinta Eka Ruliyanti</h3>
-				<p>Putri Bapak S umirin & (Almh.) Ibu Sri Lestari</p>
-			</div>
-			<div class="mempelai-spacer" />
-			<div class="mempelai">
-				<div class="img-mempelai">
-					<img src="./images/bayu_thumbnail.JPG" alt="" width="100%" />
+				<div class="mempelai-spacer" />
+				<div class="mempelai">
+					<div class="img-mempelai">
+						<img src="./images/bayu_thumbnail.JPG" alt="" width="100%" />
+					</div>
+					<h3>Bayu Rofid Fanani</h3>
+					<p>Putra Bapak Samaji dan Ibu Suminah</p>
 				</div>
-				<h3>Bayu Rofid Fanani</h3>
-				<p>Putra Bapak Samaji dan Ibu Suminah</p>
 			</div>
 		</div>
 	</div>
@@ -144,13 +184,17 @@
 			<h4>Resepsi</h4>
 			<p>
 				27 Juni 2023 <br />
-				Pukul 13:00 WIB
+				Pukul 13:00 WIB <br />
+				Lokasi: Rumah Pengantin Perempuan
 			</p>
 			<h4>Unduh Manten</h4>
 			<p>
 				28 Juni 2023 <br />
-				Pukul 14:00 WIB
+				Pukul 14:00 WIB <br />
+				Lokasi: Rumah Pengantin Laki-laki
 			</p>
+			<h4>Lokasi</h4>
+			<p>Dukuh Bandaralim Tengah RT 003/ RW 002 Desa Bandaralim, Kec. Badegan (Erinta Eka)</p>
 		</div>
 	</div>
 	<div class="slides" id="slide-4">
@@ -171,21 +215,53 @@
 		</div>
 	</div>
 	<div class="slides" id="slide-6">
-		<div class="center">
-			<h3>RSVP & Send your wishes</h3>
-			<div>
-				<input type="text" value={authUser?.displayName} />
-			</div>
-			<div>
-				<select name="" id="">
-					<option value="">Pilih satu</option>
-					<option value="datang">Datang</option>
-					<option value="tidak_datang">Tidak datang</option>
-				</select>
-			</div>
-			<div>
-				<textarea name="" id="" cols="30" rows="10" placeholder="pesan anda" />
-			</div>
+		<div class="form-container">
+			<form action="" on:submit|preventDefault={submit}>
+				<h3 class="center">RSVP & Send your wishes</h3>
+				<div class="spacer">
+					<small>Nama:</small>
+					<input
+						required
+						type="text"
+						autocapitalize="words"
+						bind:value={inputNama}
+						placeholder="Nama Anda"
+					/>
+				</div>
+				<div class="spacer">
+					<small>Status Kedatangan:</small> <br />
+					<select name="" id="" required bind:value={inputKedatangan}>
+						<option value="">Pilih satu</option>
+						<option value="datang">Datang</option>
+						<option value="tidak_datang">Tidak datang</option>
+					</select>
+				</div>
+				<div class="spacer">
+					<small>Pesan dan Doa Anda:</small>
+					<textarea
+						bind:value={inputPesan}
+						required
+						cols="30"
+						rows="10"
+						placeholder="Pesan anda dan doa anda untuk kami"
+					/>
+				</div>
+				<div class="spacer">
+					<button class="btn btn-primary">Kirim Pesan dan Doa</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="slides" id="slide-7">
+		<h3 class="center">Pesan dari undangan</h3>
+		<div class="container">
+			{#each Object.entries(listPesan) as [id, psn]}
+				<div>
+					{psn.nama} <br />
+					{psn.kedatangan} <br />
+					{psn.pesan} <br />
+				</div>
+			{/each}
 		</div>
 	</div>
 </div>
