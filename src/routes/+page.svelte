@@ -52,6 +52,8 @@
 			created: Date.now()
 		});
 		console.log('insert db');
+		inputPesan = '';
+		alert('Terimakasih atas doanya 😁');
 	}
 
 	const tglNikah: number = new Date('Jun 27, 2023 08:00:00').getTime();
