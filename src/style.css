@@ -19,7 +19,8 @@ body {
 	padding: 0;
 	margin: 0;
 }
-body {
+body,
+a {
 	color: var(--font-primary);
 }
 h1,
@@ -101,6 +102,13 @@ select {
 #cover #open-btn {
 	margin-top: 1rem;
 }
+.tujuan-undangan {
+	padding: 1rem;
+	text-align: center;
+	background-color: var(--btn-text);
+	margin: 1rem;
+	border-radius: 10px;
+}
 
 /* Content Style */
 #content {
@@ -151,6 +159,25 @@ select {
 .form-container input,
 .form-container textarea {
 	width: 100%;
+}
+
+/* Pesan */
+.pesan {
+	padding: 1rem;
+	border-radius: 1rem;
+	background-color: var(--muted-primary);
+	margin: 0.5rem 0;
+}
+.pesan-kedatangan {
+	font-size: small;
+	background-color: var(--btn-text);
+	border-radius: 999px;
+	padding: 4px 8px;
+	display: inline-block;
+}
+.pesan-header {
+}
+.pesan-body {
 }
 
 /* Navigation style */

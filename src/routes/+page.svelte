@@ -10,7 +10,7 @@
 		updateProfile,
 		type UserCredential
 	} from 'firebase/auth';
-	import { Database, getDatabase, onValue, push, ref, set } from 'firebase/database';
+	import { Database, getDatabase, onValue, ref, set } from 'firebase/database';
 
 	type pesan = {
 		nama: string;
@@ -133,6 +133,10 @@
 		<div class="mempelai satu">Bayu Rofid Fanani</div>
 		<div class="dan">&</div>
 		<div class="mempelai dua">Erinta Eka Ruliyanti</div>
+		<div class="tujuan-undangan">
+			<div>Kepada Yth. Sdr/Sdri:</div>
+			<div class="nama-undagan">{inputNama}</div>
+		</div>
 		<button class="btn btn-primary" id="open-btn" on:click={openInvite}>Buka undangan</button>
 	</div>
 </div>
@@ -186,16 +190,34 @@
 				<p>
 					27 Juni 2023 <br />
 					Pukul 13:00 WIB <br />
-					Lokasi: Rumah Pengantin Perempuan
+					Lokasi: <a href="https://goo.gl/maps/hLYfCqABuDj75UMs7">Rumah Pengantin Perempuan</a>
+					<br />
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d853.7801058816258!2d111.36982072264286!3d-7.882078960908485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sid!4v1687271517904!5m2!1sen!2sid"
+						width="100%"
+						height="450"
+						style="border:0;"
+						title="Rumah Pengantin Perempuan"
+						loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade"
+					/>
 				</p>
 				<h4>Unduh Manten</h4>
 				<p>
 					28 Juni 2023 <br />
 					Pukul 14:00 WIB <br />
-					Lokasi: Rumah Pengantin Laki-laki
+					Lokasi: <a href="https://goo.gl/maps/WKEYLe3zZNquCbuk8">Rumah Pengantin Laki-laki</a>
+					<br />
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d393.8288718481701!2d111.42235525784497!3d-7.865852920366883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sid!4v1687271670038!5m2!1sen!2sid"
+						width="100%"
+						height="450"
+						style="border:0;"
+						title="Rumah Pengantin Laki-laki"
+						loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade"
+					/>
 				</p>
-				<h4>Lokasi</h4>
-				<p>Dukuh Bandaralim Tengah RT 003/ RW 002 Desa Bandaralim, Kec. Badegan (Erinta Eka)</p>
 			</div>
 		</div>
 	</div>
@@ -204,12 +226,12 @@
 			<div class="center">
 				<h3>Count down to</h3>
 				<h4>Our Happy Day</h4>
-				<div class="countdown">
+				<h2 class="countdown">
 					<div class="hari">{hari} hari</div>
 					<div class="jam">{jam} jam</div>
 					<div class="menit">{menit} menit</div>
 					<div class="detik">{detik} detik</div>
-				</div>
+				</h2>
 			</div>
 		</div>
 	</div>
@@ -262,10 +284,20 @@
 		<div class="container">
 			<h3 class="center">Pesan dari undangan</h3>
 			{#each Object.entries(listPesan) as [id, psn]}
-				<div>
-					{psn.nama} <br />
-					{psn.kedatangan} <br />
-					{psn.pesan} <br />
+				<div class="pesan">
+					<div class="pesan-header">
+						<div class="pesan-nama">
+							{psn.nama}
+						</div>
+						<div>
+							<span class="pesan-kedatangan">
+								{psn.kedatangan == 'datang' ? 'Datang' : 'Tidak Datang'}
+							</span>
+						</div>
+					</div>
+					<div class="pesan-body">
+						{psn.pesan}
+					</div>
 				</div>
 			{/each}
 		</div>
