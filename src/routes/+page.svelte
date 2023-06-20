@@ -18,7 +18,7 @@
 		pesan: string;
 	};
 
-	let statusOpen: boolean = false;
+	let statusOpen: boolean = true;
 	let hari: string = '0',
 		jam: string = '0',
 		menit: string = '0',
@@ -58,6 +58,18 @@
 
 	const tglNikah: number = new Date('Jun 27, 2023 08:00:00').getTime();
 	let countdown: NodeJS.Timer | number | undefined = undefined;
+
+	function aktifasi(el: MouseEvent) {
+		if (el.target == null) return;
+		if (el.target instanceof Element) {
+			const target: Element = el.target;
+			if (target.classList.contains('buttons')) {
+				const aktifSekarang = document.querySelector('.buttons.aktif');
+				aktifSekarang?.classList.remove('aktif');
+				target.classList.add('aktif');
+			}
+		}
+	}
 
 	// function timeLeftTo()
 	onMount(() => {
@@ -241,6 +253,29 @@
 		<div class="container">
 			<div class="center">
 				<h3>Send Gifts</h3>
+				<p>
+					Rumah: <br />
+					(Rumah Bpk. Sumirin) Dukuh Bandaralim Tengah RT 003/ RW 002 Desa Bandaralim, Kec. Badegan,
+					63455
+				</p>
+				<br />
+				<p>
+					<img src="./images/bca.svg" alt="" width="96" /> <br />
+					Bank BCA: <br />
+					(Erinta Eka E.) 6720601468
+				</p>
+				<br />
+				<p>
+					<img src="./images/bri.svg" alt="" width="80" /> <br />
+					Bank BRI: <br />
+					(Bayu Rofid F.) 3214-01-055001-53-2
+				</p>
+				<br />
+				<p>
+					<img src="./images/gopay.png" alt="" width="48" /> <br />
+					Gopay: <br />
+					+6282336670420
+				</p>
 			</div>
 		</div>
 	</div>
@@ -308,10 +343,51 @@
 <div id="navigation">
 	<nav>
 		<ul>
-			<li>H</li>
-			<li>J</li>
-			<li>K</li>
-			<li>L</li>
+			<li>
+				<button
+					on:click={(t) => {
+						aktifasi(t);
+					}}
+				>
+					<div class="buttons home-button aktif" />
+				</button>
+			</li>
+			<li>
+				<button
+					on:click={(t) => {
+						aktifasi(t);
+					}}
+				>
+					<div class="buttons lokasi-button" />
+				</button>
+			</li>
+			<li>
+				<button
+					on:click={(t) => {
+						aktifasi(t);
+					}}
+				>
+					<div class="buttons kalender-button" />
+				</button>
+			</li>
+			<li>
+				<button
+					on:click={(t) => {
+						aktifasi(t);
+					}}
+				>
+					<div class="buttons gift-button" />
+				</button>
+			</li>
+			<li>
+				<button
+					on:click={(t) => {
+						aktifasi(t);
+					}}
+				>
+					<div class="buttons wish-button" />
+				</button>
+			</li>
 		</ul>
 	</nav>
 </div>

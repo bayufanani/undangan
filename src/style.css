@@ -196,7 +196,70 @@ select {
 	left: 0;
 	right: 0;
 	z-index: 10;
-	background-color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(195, 212, 165, 0.3);
 	box-shadow: 0 -2px 25px rgba(30, 30, 30, 0.2);
 	backdrop-filter: blur(5px);
+}
+#navigation button {
+	background: none;
+	outline: none;
+	border: none;
+	cursor: pointer;
+}
+#navigation .buttons {
+	width: 24px;
+	height: 24px;
+	background-size: contain;
+	position: relative;
+}
+.home-button {
+	background-image: url('./images/home.png');
+}
+.home-button:hover,
+.home-button.aktif {
+	background-image: url('./images/home-aktif.png');
+}
+.lokasi-button {
+	background-image: url('./images/lokasi.png');
+}
+.lokasi-button:hover,
+.lokasi-button.aktif {
+	background-image: url('./images/lokasi-aktif.png');
+}
+.kalender-button {
+	background-image: url('./images/kalender.png');
+}
+.kalender-button:hover,
+.kalender-button.aktif {
+	background-image: url('./images/kalender-aktif.png');
+}
+.gift-button {
+	background-image: url('./images/gift.png');
+}
+.gift-button:hover,
+.gift-button.aktif {
+	background-image: url('./images/gift-aktif.png');
+}
+.wish-button {
+	background-image: url('./images/wish.png');
+}
+.wish-button:hover,
+.wish-button.aktif {
+	background-image: url('./images/wish-aktif.png');
+}
+
+#navigation .buttons::before {
+	transition: all 0.3s ease;
+	transform: scale(0);
+	display: block;
+	border-radius: 100%;
+	background-color: #ffffff;
+	content: '';
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	position: absolute;
+}
+#navigation .buttons.aktif::before {
+	transform: scale(1.5);
 }
