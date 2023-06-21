@@ -1,0 +1,9 @@
+{
+    "name": "Undangan Bayu Erinta",
+    "short_name": "Undangan Digital",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#fff",
+    "description": "Undangan Digital Bayu dan Erinta",
+    "theme_color": "#6e8641"
+}
