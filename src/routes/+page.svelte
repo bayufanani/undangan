@@ -201,7 +201,7 @@
 			<button class="btn btn-primary" id="open-btn" on:click={openInvite}>Buka undangan</button>
 		</div>
 	</div>
-	<audio src="./sounds/beautiful_in_white.mp3" autoplay id="musik" />
+	<audio src="./sounds/beautiful_in_white.mp3" autoplay id="musik" loop />
 	<div class="audio-control">
 		<button class="btn-audio" on:click={toggleMusik}>
 			{#if playing}
