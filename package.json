@@ -8,7 +8,7 @@
 		"dev-host": "vite dev --host",
 		"build": "vite build",
 		"predeploy": "npm run build",
-		"deploy": "gh-pages -d dist",
+		"deploy": "gh-pages -d build -t true",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
