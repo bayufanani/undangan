@@ -154,6 +154,8 @@ select {
 	height: 100vh;
 	overflow: auto;
 	color: var(--font-primary);
+}
+.slides:last-of-type {
 	padding-bottom: 100px;
 }
 .slides {

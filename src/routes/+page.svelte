@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../style.css';
+	import { base } from '$app/paths';
 	import { onMount } from 'svelte';
 	import { initializeApp } from 'firebase/app';
 	import { getAnalytics, logEvent } from 'firebase/analytics';
@@ -201,13 +202,13 @@
 			<button class="btn btn-primary" id="open-btn" on:click={openInvite}>Buka undangan</button>
 		</div>
 	</div>
-	<audio src="./sounds/beautiful_in_white.mp3" autoplay id="musik" loop />
+	<audio src="/sounds/beautiful_in_white.mp3" autoplay id="musik" loop />
 	<div class="audio-control {playing ? 'playing' : ''}">
 		<button class="btn-audio" on:click={toggleMusik}>
 			{#if playing}
-				<img src="./images/musik-play.png" alt="" height="24" />
+				<img src="/images/musik-play.png" alt="" height="24" />
 			{:else}
-				<img src="./images/musik-mute.png" alt="" height="24" />
+				<img src="/images/musik-mute.png" alt="" height="24" />
 			{/if}
 		</button>
 	</div>
@@ -233,7 +234,7 @@
 				<div class="center">
 					<div class="mempelai">
 						<div class="img-mempelai">
-							<img src="./images/erinta_thumbnail.JPG" alt="" width="100%" />
+							<img src="/images/erinta_thumbnail.JPG" alt="" width="100%" />
 						</div>
 						<h3>Erinta Eka Ruliyanti</h3>
 						<p>Putri Bapak S umirin & (Almh.) Ibu Sri Lestari</p>
@@ -241,7 +242,7 @@
 					<div class="mempelai-spacer" />
 					<div class="mempelai">
 						<div class="img-mempelai">
-							<img src="./images/bayu_thumbnail.JPG" alt="" width="100%" />
+							<img src="/images/bayu_thumbnail.JPG" alt="" width="100%" />
 						</div>
 						<h3>Bayu Rofid Fanani</h3>
 						<p>Putra Bapak Samaji dan Ibu Suminah</p>
@@ -318,19 +319,19 @@
 					</p>
 					<br />
 					<p>
-						<img src="./images/bca.svg" alt="" width="96" /> <br />
+						<img src="/images/bca.svg" alt="" width="96" /> <br />
 						Bank BCA: <br />
 						(Erinta Eka E.) 6720601468
 					</p>
 					<br />
 					<p>
-						<img src="./images/bri.svg" alt="" width="80" /> <br />
+						<img src="/images/bri.svg" alt="" width="80" /> <br />
 						Bank BRI: <br />
 						(Bayu Rofid F.) 3214-01-055001-53-2
 					</p>
 					<br />
 					<p>
-						<img src="./images/gopay.png" alt="" width="48" /> <br />
+						<img src="/images/gopay.png" alt="" width="48" /> <br />
 						Gopay: <br />
 						+6282336670420
 					</p>
@@ -374,8 +375,7 @@
 					</div>
 				</form>
 			</div>
-		</div>
-		<div class="slides" id="slide-7">
+
 			<div class="container">
 				<h3 class="center">Pesan dari undangan</h3>
 				{#each Object.entries(listPesan) as [id, psn]}
