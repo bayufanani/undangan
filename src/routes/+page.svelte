@@ -202,7 +202,7 @@
 		</div>
 	</div>
 	<audio src="./sounds/beautiful_in_white.mp3" autoplay id="musik" loop />
-	<div class="audio-control">
+	<div class="audio-control {playing ? 'playing' : ''}">
 		<button class="btn-audio" on:click={toggleMusik}>
 			{#if playing}
 				<img src="./images/musik-play.png" alt="" height="24" />
@@ -450,3 +450,41 @@
 		</nav>
 	</div>
 </div>
+
+<style>
+	.home-button {
+		background-image: url('/images/home.png');
+	}
+	.home-button:hover,
+	.home-button.aktif {
+		background-image: url('/images/home-aktif.png');
+	}
+	.lokasi-button {
+		background-image: url('/images/lokasi.png');
+	}
+	.lokasi-button:hover,
+	.lokasi-button.aktif {
+		background-image: url('/images/lokasi-aktif.png');
+	}
+	.kalender-button {
+		background-image: url('/images/kalender.png');
+	}
+	.kalender-button:hover,
+	.kalender-button.aktif {
+		background-image: url('/images/kalender-aktif.png');
+	}
+	.gift-button {
+		background-image: url('/images/gift.png');
+	}
+	.gift-button:hover,
+	.gift-button.aktif {
+		background-image: url('/images/gift-aktif.png');
+	}
+	.wish-button {
+		background-image: url('/images/wish.png');
+	}
+	.wish-button:hover,
+	.wish-button.aktif {
+		background-image: url('/images/wish-aktif.png');
+	}
+</style>
