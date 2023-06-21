@@ -18,7 +18,7 @@
 		pesan: string;
 	};
 
-	let statusOpen: boolean = true;
+	let statusOpen: boolean = false;
 	let hari: string = '0',
 		jam: string = '0',
 		menit: string = '0',
