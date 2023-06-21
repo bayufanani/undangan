@@ -34,7 +34,19 @@ h6 {
 p {
 	margin: 0;
 }
-
+audio {
+	display: none;
+}
+.audio-control {
+	position: fixed;
+	top: 1rem;
+	left: 1rem;
+}
+.btn-audio {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+}
 /* Custom Bootstrap */
 .btn {
 	padding: 0.5rem 1rem;
@@ -119,6 +131,7 @@ select {
 }
 .slides {
 	padding: 0.25rem 1rem 1rem;
+	min-height: 100%;
 }
 .center {
 	text-align: center;

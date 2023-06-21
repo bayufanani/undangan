@@ -61,13 +61,32 @@
 
 	function aktifasi(el: MouseEvent) {
 		if (el.target == null) return;
-		if (el.target instanceof Element) {
-			const target: Element = el.target;
+		if (el.target instanceof HTMLElement) {
+			const target: HTMLElement = el.target;
 			if (target.classList.contains('buttons')) {
-				const aktifSekarang = document.querySelector('.buttons.aktif');
-				aktifSekarang?.classList.remove('aktif');
-				target.classList.add('aktif');
+				// const aktifSekarang = document.querySelector('.buttons.aktif');
+				// aktifSekarang?.classList.remove('aktif');
+				// target.classList.add('aktif');
+				document.querySelector('#' + target.dataset.target)?.scrollIntoView({ behavior: 'smooth' });
+				// const targetEl = document
+				// .querySelector('#' + target.dataset.target)
+				// ?.getBoundingClientRect();
+				// document.querySelector('#content')?.scrollTo({ top: targetEl?.top, behavior: 'smooth' });
+				// console.log(targetEl?.x, targetEl);
 			}
+		}
+	}
+
+	let playing = true;
+	function toggleMusik() {
+		const musik = document.querySelector<HTMLAudioElement>('#musik');
+		// console.log(musik?.played, musik?.paused);
+		if (!musik?.paused) {
+			musik?.pause();
+			playing = false;
+		} else {
+			musik?.play();
+			playing = true;
 		}
 	}
 
@@ -139,6 +158,25 @@
 		onAuthStateChanged(auth, (user) => {
 			console.log(user?.displayName);
 		});
+
+		const spyScrolling = () => {
+			const sections = document.querySelectorAll<HTMLElement>('.slides');
+			const content = document.querySelector<HTMLElement>('#content');
+
+			content!.onscroll = () => {
+				const scrollPos = content?.scrollTop || document.body.scrollTop;
+
+				// console.log(sections[0].id);
+				for (let s in sections)
+					if (sections.hasOwnProperty(s) && sections[s].offsetTop <= scrollPos) {
+						const id = sections[s].id;
+						document.querySelector('.aktif')?.classList.remove('aktif');
+						const parent = document.querySelector<HTMLElement>(`[data-target=${id}]`);
+						parent?.classList.add('aktif');
+					}
+			};
+		};
+		spyScrolling();
 	});
 </script>
 
@@ -154,6 +192,16 @@
 		<button class="btn btn-primary" id="open-btn" on:click={openInvite}>Buka undangan</button>
 	</div>
 </div>
+<audio src="./sounds/beautiful_in_white.mp3" autoplay id="musik" />
+<div class="audio-control">
+	<button class="btn-audio" on:click={toggleMusik}>
+		{#if playing}
+			<img src="./images/musik-play.png" alt="" height="24" />
+		{:else}
+			<img src="./images/musik-mute.png" alt="" height="24" />
+		{/if}
+	</button>
+</div>
 <div id="content">
 	<div class="slides" id="slide-1">
 		<div class="container">
@@ -163,8 +211,6 @@
 				<p>Putri Bapak Sumirin & (Almh.) Ibu Lestari Beserta Putra Bapak Samaji dan Ibu Suminah</p>
 			</div>
 		</div>
-	</div>
-	<div class="slides" id="slide-2">
 		<div class="container">
 			<p class="center">اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَا تُهُ</p>
 			<p class="center">
@@ -349,7 +395,7 @@
 						aktifasi(t);
 					}}
 				>
-					<div class="buttons home-button aktif" />
+					<div class="buttons home-button aktif" data-target="slide-1" />
 				</button>
 			</li>
 			<li>
@@ -358,7 +404,7 @@
 						aktifasi(t);
 					}}
 				>
-					<div class="buttons lokasi-button" />
+					<div class="buttons lokasi-button" data-target="slide-3" />
 				</button>
 			</li>
 			<li>
@@ -367,7 +413,7 @@
 						aktifasi(t);
 					}}
 				>
-					<div class="buttons kalender-button" />
+					<div class="buttons kalender-button" data-target="slide-4" />
 				</button>
 			</li>
 			<li>
@@ -376,7 +422,7 @@
 						aktifasi(t);
 					}}
 				>
-					<div class="buttons gift-button" />
+					<div class="buttons gift-button" data-target="slide-5" />
 				</button>
 			</li>
 			<li>
@@ -385,7 +431,7 @@
 						aktifasi(t);
 					}}
 				>
-					<div class="buttons wish-button" />
+					<div class="buttons wish-button" data-target="slide-6" />
 				</button>
 			</li>
 		</ul>
