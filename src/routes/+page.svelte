@@ -202,13 +202,13 @@
 			<button class="btn btn-primary" id="open-btn" on:click={openInvite}>Buka undangan</button>
 		</div>
 	</div>
-	<audio src="/sounds/beautiful_in_white.mp3" autoplay id="musik" loop />
+	<audio src="{base}/sounds/beautiful_in_white.mp3" autoplay id="musik" loop />
 	<div class="audio-control {playing ? 'playing' : ''}">
 		<button class="btn-audio" on:click={toggleMusik}>
 			{#if playing}
-				<img src="/images/musik-play.png" alt="" height="24" />
+				<img src="{base}/images/musik-play.png" alt="" height="24" />
 			{:else}
-				<img src="/images/musik-mute.png" alt="" height="24" />
+				<img src="{base}/images/musik-mute.png" alt="" height="24" />
 			{/if}
 		</button>
 	</div>
@@ -218,31 +218,32 @@
 				<div class="center">
 					<p>The wedding of</p>
 					<h1>Erinta & Bayu</h1>
-					<p>
-						Putri Bapak Sumirin & (Almh.) Ibu Lestari Beserta Putra Bapak Samaji dan Ibu Suminah
-					</p>
+					<br />
+					<br />
 				</div>
 			</div>
 			<div class="container">
-				<p class="center">اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَا تُهُ</p>
+				<p class="center">بِسْــــــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ</p>
+				<br />
 				<p class="center">
 					Maha suci Allah yang telah menciptakan mahluk-Nya berpasang-pasangan. Ya Allah,
 					perkenankanlah kami merangkaikan kasih sayang yang kau ciptakan diantara kami untuk
 					mengikuti Sunnah Rasul-Mu dalam rangka membentuk keluarga yang sakinah, mawaddah,
 					warahmah.
 				</p>
+				<br />
 				<div class="center">
 					<div class="mempelai">
 						<div class="img-mempelai">
-							<img src="/images/erinta_thumbnail.JPG" alt="" width="100%" />
+							<img src="{base}/images/erinta_thumbnail.JPG" alt="" width="100%" />
 						</div>
 						<h3>Erinta Eka Ruliyanti</h3>
-						<p>Putri Bapak S umirin & (Almh.) Ibu Sri Lestari</p>
+						<p>Putri Bapak Sumirin & (Almh.) Ibu Sri Lestari</p>
 					</div>
 					<div class="mempelai-spacer" />
 					<div class="mempelai">
 						<div class="img-mempelai">
-							<img src="/images/bayu_thumbnail.JPG" alt="" width="100%" />
+							<img src="{base}/images/bayu_thumbnail.JPG" alt="" width="100%" />
 						</div>
 						<h3>Bayu Rofid Fanani</h3>
 						<p>Putra Bapak Samaji dan Ibu Suminah</p>
@@ -266,7 +267,7 @@
 						Lokasi: <a href="https://goo.gl/maps/hLYfCqABuDj75UMs7">Rumah Pengantin Perempuan</a>
 						<br />
 						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d853.7801058816258!2d111.36982072264286!3d-7.882078960908485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sid!4v1687271517904!5m2!1sen!2sid"
+							src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3952.1245232724104!2d111.36967!3d-7.882037999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwNTInNTUuMyJTIDExMcKwMjInMTAuOCJF!5e0!3m2!1sen!2sid!4v1687399049764!5m2!1sen!2sid"
 							width="100%"
 							height="450"
 							style="border:0;"
@@ -275,14 +276,14 @@
 							referrerpolicy="no-referrer-when-downgrade"
 						/>
 					</p>
-					<h4>Unduh Manten</h4>
+					<h4>Ngundhuh Mantu</h4>
 					<p>
 						28 Juni 2023 <br />
 						Pukul 14:00 WIB <br />
 						Lokasi: <a href="https://goo.gl/maps/WKEYLe3zZNquCbuk8">Rumah Pengantin Laki-laki</a>
 						<br />
 						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d393.8288718481701!2d111.42235525784497!3d-7.865852920366883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sid!4v1687271670038!5m2!1sen!2sid"
+							src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1976.1387543077874!2d111.42253572023773!3d-7.866001360169214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwNTEnNTcuMCJTIDExMcKwMjUnMjEuMyJF!5e0!3m2!1sen!2sid!4v1687398907302!5m2!1sen!2sid"
 							width="100%"
 							height="450"
 							style="border:0;"
@@ -319,19 +320,19 @@
 					</p>
 					<br />
 					<p>
-						<img src="/images/bca.svg" alt="" width="96" /> <br />
+						<img src="{base}/images/bca.svg" alt="" width="96" /> <br />
 						Bank BCA: <br />
-						(Erinta Eka E.) 6720601468
+						(Erinta Eka R.) 6720601468
 					</p>
 					<br />
 					<p>
-						<img src="/images/bri.svg" alt="" width="80" /> <br />
+						<img src="{base}/images/bri.svg" alt="" width="80" /> <br />
 						Bank BRI: <br />
 						(Bayu Rofid F.) 3214-01-055001-53-2
 					</p>
 					<br />
 					<p>
-						<img src="/images/gopay.png" alt="" width="48" /> <br />
+						<img src="{base}/images/gopay.png" alt="" width="48" /> <br />
 						Gopay: <br />
 						+6282336670420
 					</p>
@@ -452,39 +453,4 @@
 </div>
 
 <style>
-	.home-button {
-		background-image: url('/images/home.png');
-	}
-	.home-button:hover,
-	.home-button.aktif {
-		background-image: url('/images/home-aktif.png');
-	}
-	.lokasi-button {
-		background-image: url('/images/lokasi.png');
-	}
-	.lokasi-button:hover,
-	.lokasi-button.aktif {
-		background-image: url('/images/lokasi-aktif.png');
-	}
-	.kalender-button {
-		background-image: url('/images/kalender.png');
-	}
-	.kalender-button:hover,
-	.kalender-button.aktif {
-		background-image: url('/images/kalender-aktif.png');
-	}
-	.gift-button {
-		background-image: url('/images/gift.png');
-	}
-	.gift-button:hover,
-	.gift-button.aktif {
-		background-image: url('/images/gift-aktif.png');
-	}
-	.wish-button {
-		background-image: url('/images/wish.png');
-	}
-	.wish-button:hover,
-	.wish-button.aktif {
-		background-image: url('/images/wish-aktif.png');
-	}
 </style>
