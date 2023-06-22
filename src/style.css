@@ -306,3 +306,23 @@ select {
 .wish-button.aktif {
 	background-image: url('/images/wish-aktif.png');
 }
+.gallery {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.gallery-item {
+	width: 20%;
+	position: relative;
+	overflow: hidden;
+}
+.gallery-item img {
+	width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+	.gallery-item {
+		width: 100%;
+	}
+}

@@ -92,6 +92,14 @@
 			musik?.play();
 			playing = true;
 		}
+		if (musik != null) {
+			musik.onplay = function () {
+				playing = true;
+			};
+			musik.onpause = function () {
+				playing = false;
+			};
+		}
 	}
 
 	// function timeLeftTo()
@@ -306,6 +314,28 @@
 						<div class="menit">{menit} menit</div>
 						<div class="detik">{detik} detik</div>
 					</h2>
+					<br />
+					<br />
+					<div class="kata-mutiara">
+						<h4>Kata Mutiara</h4>
+						<p>
+							Aku tak pernah menunggumu. Kamu tak pernah sengaja datang. Tapi kita dipertemukan
+							Tuhan. Entah untuk saling duduk berdampingan atau saling memberi pelajaran. Entah
+							untuk saling mengirim undangan pernikahan, atau duduk bersama di pelaminan.
+						</p>
+						<br />
+						<p>Rohmatikal Maskur</p>
+					</div>
+					<br />
+					<br />
+					<h3>Gallery</h3>
+					<div class="gallery">
+						{#each [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as item}
+							<div class="gallery-item">
+								<img src="{base}/images/prewed/img-{item}.JPG" alt="" />
+							</div>
+						{/each}
+					</div>
 				</div>
 			</div>
 		</div>
@@ -453,4 +483,8 @@
 </div>
 
 <style>
+	.kata-mutiara {
+		padding: 1rem;
+		background-color: var(--btn-text);
+	}
 </style>
